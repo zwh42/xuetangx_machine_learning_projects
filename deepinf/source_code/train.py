@@ -15,6 +15,7 @@ import argparse
 import numpy as np
 
 import torch
+torch.backends.cudnn.benchmark = True
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import DataLoader

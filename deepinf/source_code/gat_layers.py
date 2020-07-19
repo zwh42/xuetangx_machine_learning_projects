@@ -47,7 +47,7 @@ class MultiHeadGraphAttention(nn.Module):
         attn = attn_src.expand(-1, -1, n) + attn_dst.expand(-1, -1, n).permute(0, 2, 1) # n_head x n x n
 
         attn = self.leaky_relu(attn)
-        attn.data.masked_fill_(1 - adj, float("-inf"))
+        attn.data.masked_filled((1-adj).bool(), float("-inf"))  #masked_fill_(1 - adj, float("-inf"))
         attn = self.softmax(attn) # n_head x n x n
         attn = self.dropout(attn)
         output = torch.bmm(attn, h_prime) # n_head x n x f_out
@@ -87,7 +87,7 @@ class BatchMultiHeadGraphAttention(nn.Module):
         attn = attn_src.expand(-1, -1, -1, n) + attn_dst.expand(-1, -1, -1, n).permute(0, 1, 3, 2) # bs x n_head x n x n
 
         attn = self.leaky_relu(attn)
-        mask = 1 - adj.unsqueeze(1) # bs x 1 x n x n
+        mask = (1 - adj.unsqueeze(1)).bool() # bs x 1 x n x n
         attn.data.masked_fill_(mask, float("-inf"))
         attn = self.softmax(attn) # bs x n_head x n x n
         attn = self.dropout(attn)
