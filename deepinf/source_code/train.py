@@ -240,7 +240,7 @@ def train(epoch, train_loader, valid_loader, test_loader, log_desc='train_'):
         total += bs
         loss_train.backward()
         optimizer.step()
-    logger.info("train loss in this epoch %f", loss / total)
+    logger.info("train loss in epoch %d:  %f", epoch, loss / total)
     tensorboard_logger.log_value('train_loss', loss / total, epoch + 1)
     if (epoch + 1) % args.check_point == 0:
         logger.info("epoch %d, checkpoint!", epoch)
