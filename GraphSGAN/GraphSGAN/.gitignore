@@ -1,9 +1,0 @@
-OpenNE/*
-*.pyc
-yangdata/*
-logfile/*
-models/*
-.DS_Store
-YangDataset.py
-cora.dataset
-
