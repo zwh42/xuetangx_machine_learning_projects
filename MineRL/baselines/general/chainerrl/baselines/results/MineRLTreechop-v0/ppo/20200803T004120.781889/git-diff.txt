@@ -1,0 +1,70 @@
+diff --git a/general/chainerrl/baselines/behavioral_cloning.sh b/general/chainerrl/baselines/behavioral_cloning.sh
+index 13ffe24..077e7c0 100644
+--- a/general/chainerrl/baselines/behavioral_cloning.sh
++++ b/general/chainerrl/baselines/behavioral_cloning.sh
+@@ -1,7 +1,7 @@
+ # PLEASE MAKE SURE THAT DATABASE IS SET CORRECTLY.
+ # By default, this code assume that expert dataset is in ./expert_dataset
+ # Treechop
+-python3 behavioral_cloning.py \
++python behavioral_cloning.py \
+  --gpu 0 --env MineRLTreechop-v0 --outdir results/MineRLTreechop-v0/behavioral_cloning \
+  --frame-skip 8 --frame-stack 1 --always-keys attack --reverse-keys forward \
+  --exclude-keys back left right sneak sprint --num-camera-discretize 7 \
+diff --git a/general/chainerrl/baselines/dddqn.sh b/general/chainerrl/baselines/dddqn.sh
+index 27a9c23..e132d46 100644
+--- a/general/chainerrl/baselines/dddqn.sh
++++ b/general/chainerrl/baselines/dddqn.sh
+@@ -1,5 +1,5 @@
+ # Treechop
+-python3 dqn_family.py \
++python dqn_family.py \
+   --gpu 0 --env MineRLTreechop-v0 --outdir results/MineRLTreechop-v0/dddqn \
+   --final-exploration-frames 1000000 --final-epsilon 0.02 --arch dueling --replay-capacity 800000 --replay-start-size 1000 \
+   --target-update-interval 1000 --update-interval 1 --agent DoubleDQN --monitor --lr 0.001 --gamma 0.99 --batch-accumulator mean \
+diff --git a/general/chainerrl/baselines/dqfd.sh b/general/chainerrl/baselines/dqfd.sh
+index 3693cc6..ecfe929 100644
+--- a/general/chainerrl/baselines/dqfd.sh
++++ b/general/chainerrl/baselines/dqfd.sh
+@@ -1,5 +1,5 @@
+ # Treechop
+-python3 train_dqfd.py \
++python train_dqfd.py \
+   --env MineRLTreechop-v0 --expert-demo-path ./expert_dataset/MineRLTreechop-v0/ \
+   --frame-skip 4 --frame-stack 4 --gpu 0 --lr 6.25e-5 --minibatch-size 32 \
+   --n-experts 16 --use-noisy-net before-pretraining
+diff --git a/general/chainerrl/baselines/gail.sh b/general/chainerrl/baselines/gail.sh
+index 1154ebb..f019625 100644
+--- a/general/chainerrl/baselines/gail.sh
++++ b/general/chainerrl/baselines/gail.sh
+@@ -1,7 +1,7 @@
+ # PLEASE MAKE SURE THAT DATABASE IS SET CORRECTLY.
+ # By default, this code assume that expert dataset is in ./expert_dataset
+ # Treechop
+-python3 gail.py \
++python gail.py \
+   --gpu 0 --env MineRLTreechop-v0 --outdir results/MineRLTreechop-v0/gail \
+   --policy ppo --frame-skip 8 --frame-stack 1 --num-camera-discretize 7 \
+   --expert ./expert_dataset --action-wrapper multi-dimensional-softmax \
+diff --git a/general/chainerrl/baselines/ppo.sh b/general/chainerrl/baselines/ppo.sh
+index f6f82b5..249729a 100644
+--- a/general/chainerrl/baselines/ppo.sh
++++ b/general/chainerrl/baselines/ppo.sh
+@@ -1,5 +1,5 @@
+ # Treechop
+-python3 ppo.py \
++python ppo.py \
+   --gpu 0 --env MineRLTreechop-v0 --outdir results/MineRLTreechop-v0/ppo \
+   --arch nature --update-interval 1024 --monitor --lr 0.00025 --frame-stack 4 --frame-skip 4 --gamma 0.99 --epochs 3 \
+   --always-keys attack --reverse-keys forward --exclude-keys back left right sneak sprint
+diff --git a/general/chainerrl/baselines/rainbow.sh b/general/chainerrl/baselines/rainbow.sh
+index aae0d75..e11e5e1 100644
+--- a/general/chainerrl/baselines/rainbow.sh
++++ b/general/chainerrl/baselines/rainbow.sh
+@@ -1,5 +1,5 @@
+ # Treechop
+-python3 dqn_family.py \
++python dqn_family.py \
+   --gpu 0 --env MineRLTreechop-v0 --outdir results/MineRLTreechop-v0/rainbow \
+   --noisy-net-sigma 0.5 --arch distributed_dueling --replay-capacity 300000 --replay-start-size 5000 \
+   --target-update-interval 10000 --num-step-return 10 --agent CategoricalDoubleDQN --monitor --lr 0.0000625 \
