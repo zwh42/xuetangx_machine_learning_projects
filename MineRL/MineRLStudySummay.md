@@ -15,3 +15,9 @@ Reference: [[1]](https://openai.com/blog/openai-baselines-ppo/),  [[2]](https://
 ## PPO result
 
 ![PPO result](.\res\ppo_snapshot.png)
+
+
+
+## DQN (Deep Q Network)
+
+DQN是一种value based 的强化学习方法，是Deep Learning与Reinforcement Learning的结合。DQN使用深度卷积神经网络逼近值函数,并且使用了经验回放(*Experience replay)对学习过程进行训练。
